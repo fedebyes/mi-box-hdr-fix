@@ -19,22 +19,29 @@ Full research + verified tap sequence: vault note `house/mibox-deep-color-automa
 
 ## Build
 
-Toolchain staged on Asus via yay (see plan): `jdk17-openjdk`, `gradle`, `android-tools`, `android-sdk-cmdline-tools-latest`, `android-platform-34`, `build-tools;34.0.0`.
+Requires JDK 17 and the Android SDK at `/opt/android-sdk` (wired via `local.properties`).
 
 ```bash
-# from project root, after toolchain installed:
-./gradlew assembleDebug
+# from project root:
+gradle :app:assembleDebug
 # APK at app/build/outputs/apk/debug/app-debug.apk
 ```
 
 ## Install (one-time, PC needed)
 
 ```bash
-adb connect 192.168.1.137:5555
-adb install app/build/outputs/apk/debug/app-debug.apk
-adb shell settings put secure enabled_accessibility_services <pkg>/.DeepColorAccessibilityService
-adb shell settings put secure accessibility_enabled 1
+bash scripts/install.sh
 ```
+
+Installs the APK on the box at `192.168.1.137:5555` (adb over WiFi) and enables the accessibility service.
+
+## Verify
+
+```bash
+bash scripts/verify.sh
+```
+
+Shows the current display mode (`mActiveModeId`) and the enabled accessibility services. After rebooting the box, `mActiveModeId` should show `65` (toggle fired) and colors should be correct.
 
 ## License
 

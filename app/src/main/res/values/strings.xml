@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Deep Color Toggle</string>
+    <string name="accessibility_description">Deep Color Toggle toggles the display color depth at boot to fix HDMI handshake issues with TVs and receivers. When enabled, the service briefly toggles the color depth shortly after boot and when the screen state changes. Enable this service to keep the fix active automatically.</string>
+    <string name="toggle_now">Toggle now</string>
+    <string name="status_accessibility_off">Accessibility service not enabled</string>
+    <string name="status_ok">Ready</string>
+</resources>

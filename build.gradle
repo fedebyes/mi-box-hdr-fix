@@ -1,0 +1,4 @@
+// Root build file — AGP 9.3.0 (built-in Kotlin, no separate KGP plugin)
+plugins {
+    id 'com.android.application' version '9.3.0' apply false
+}
