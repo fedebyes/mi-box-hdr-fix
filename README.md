@@ -45,6 +45,12 @@ accessibility service, which you enable once after install.
 > DroidLogic 1080p settings UI. On other boxes/firmware the coordinates may need
 > adjusting — see `Config.kt` and re-verify with `uiautomator dump`.
 
+> 🧪 **2nd gen / 3rd gen (Google TV): NOT yet supported.** The coordinates target
+> the DroidLogic settings UI (1st gen only). Any change intended to extend support
+> to 2nd/3rd gen boxes **must be validated by the maintainer on real hardware
+> before merging** — do not submit coordinate changes for those generations
+> without opening an issue first. See [docs/r-mibox-post.md](docs/r-mibox-post.md).
+
 ## Build
 
 Requires JDK 17 and the Android SDK (path via `local.properties`).
