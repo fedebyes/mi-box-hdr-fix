@@ -5,6 +5,8 @@ Fix HDMI color-depth (deep color) handshake failures on Android TV boxes **autom
 [![Build & Test](https://github.com/fedebyes/mibox-deep-color-toggle/actions/workflows/build.yml/badge.svg)](https://github.com/fedebyes/mibox-deep-color-toggle/actions/workflows/build.yml)
 [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
 
+![App](play-assets/screenshot-app-main.png)
+
 ## The problem
 
 TV → LED sync box → TV chain (e.g. Mi Box S → HDMI LED sync box → LG TV) all power
@@ -24,6 +26,12 @@ A tiny framework-only Android app (no AndroidX, no Internet permission) that:
 
 Requires **no root** and **no PC at boot**. The only permission is the
 accessibility service, which you enable once after install.
+
+## Screenshots
+
+| App | Display settings (what the app automates) |
+|---|---|
+| ![App main screen](play-assets/screenshot-app-main.png) | ![Display settings](play-assets/screenshot-settings.png) |
 
 ## Compatibility
 
