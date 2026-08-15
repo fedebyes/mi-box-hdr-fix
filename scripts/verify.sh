@@ -2,7 +2,8 @@
 set -euo pipefail
 
 # Verify display mode + accessibility state on the Mi Box S.
-BOX_IP="192.168.1.137:5555"
+# Override the box address with: BOX_IP=192.168.1.137:5555 ./scripts/verify.sh
+BOX_IP="${BOX_IP:-192.168.1.137:5555}"
 
 # Connect over WiFi (ignore failure if already connected)
 adb connect "$BOX_IP" || true

@@ -3,7 +3,8 @@ set -euo pipefail
 
 # Install the deep color toggle APK on the Mi Box S and enable the
 # accessibility service that fires the toggle at boot/wake.
-BOX_IP="192.168.1.137:5555"
+# Override the box address with: BOX_IP=192.168.1.137:5555 ./scripts/install.sh
+BOX_IP="${BOX_IP:-192.168.1.137:5555}"
 SERVICE="dev.fedebyes.deepcolortoggle/.DeepColorAccessibilityService"
 
 SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"

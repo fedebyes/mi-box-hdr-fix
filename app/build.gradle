@@ -2,6 +2,16 @@ plugins {
     id 'com.android.application'
 }
 
+// Optional release signing: keystore.properties is kept OUT of the repo
+// (in ~/.local/secrets/asus/). When absent, release builds stay unsigned —
+// fine for local/CI, required only for Play uploads.
+def keystorePropsFile = file(System.getProperty("user.home") + "/.local/secrets/asus/deepcolor-upload-keystore.properties")
+def hasKeystore = keystorePropsFile.exists()
+def keystoreProps = new Properties()
+if (hasKeystore) {
+    keystoreProps.load(keystorePropsFile.newInputStream())
+}
+
 android {
     namespace 'dev.fedebyes.deepcolortoggle'
     compileSdk 36
@@ -11,12 +21,26 @@ android {
         minSdk 28
         targetSdk 36
         versionCode 1
-        versionName "1.0"
+        versionName "1.0.0"
+    }
+
+    signingConfigs {
+        release {
+            if (hasKeystore) {
+                storeFile file(keystoreProps['storeFile'])
+                storePassword keystoreProps['storePassword']
+                keyAlias keystoreProps['keyAlias']
+                keyPassword keystoreProps['keyPassword']
+            }
+        }
     }
 
     buildTypes {
         release {
             minifyEnabled false
+            if (hasKeystore) {
+                signingConfig signingConfigs.release
+            }
         }
     }
 

@@ -1,39 +1,66 @@
-# mibox-deep-color-toggle
+# Deep Color Toggle
 
-Custom no-root Android app for the Xiaomi Mi Box S (`oneday`, Android 9) that toggles **Color Depth Settings** (deep color) off → on at boot/wake to force HDMI re-negotiation with the LED sync box + LG Nano 55 chain.
+Fix HDMI color-depth (deep color) handshake failures on Android TV boxes **automatically**, no root required.
 
-**Status:** plan ready — not built yet.
+[![Build & Test](https://github.com/fedebyes/mibox-deep-color-toggle/actions/workflows/build.yml/badge.svg)](https://github.com/fedebyes/mibox-deep-color-toggle/actions/workflows/build.yml)
+[![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
 
-## Why
+## The problem
 
-Mi Box → LED sync box (HDMI IN) → LG Nano 55. All devices power on together → HDMI handshake fails → wrong color matrix. Manual fix: toggle deep color once. This app automates that, fully on-box, open source, no root, no PC at boot.
+TV → LED sync box → TV chain (e.g. Mi Box S → HDMI LED sync box → LG TV) all power
+on together. The HDMI handshake fails, the color matrix comes up wrong, and the only
+manual fix is toggling **Color Depth Settings** off → on once. Doing that on every
+boot/wake gets old fast.
 
-Full research + verified tap sequence: vault note `house/mibox-deep-color-automation.md` (2026-08-14).
+## What it does
 
-## How
+A tiny framework-only Android app (no AndroidX, no Internet permission) that:
 
-- **AccessibilityService** (only permission needed, granted at install) dispatches `input tap`-style gestures on the DroidLogic display settings UI
-- `BootReceiver` (manifest `BOOT_COMPLETED`) + `ScreenOnReceiver` trigger the toggle sequence
-- Guard: toggle once per boot (SharedPreferences flag)
-- Verified tap sequence (1920×1080 UI, coords in vault note)
+- listens for **boot** and **screen-on** events;
+- opens the system display-settings screen and emits the verified tap sequence that
+  toggles Color Depth off → on;
+- **guards** itself: the toggle runs at most once per boot/wake window (dual
+  elapsed + wall-clock guard), and the sequence aborts if any step is rejected.
+
+Requires **no root** and **no PC at boot**. The only permission is the
+accessibility service, which you enable once after install.
+
+## Compatibility
+
+| | |
+|---|---|
+| Min Android | 8.0 (API 28) |
+| Target Android | 15 (API 36) |
+| Tested on | Xiaomi Mi Box S (Android 9, DroidLogic firmware) |
+| Display settings UI | `com.droidlogic.tv.settings.display.DisplayActivity` (1080p coordinates) |
+
+> ⚠️ The tap sequence is **coordinate-based** and verified against the Mi Box S's
+> DroidLogic 1080p settings UI. On other boxes/firmware the coordinates may need
+> adjusting — see `Config.kt` and re-verify with `uiautomator dump`.
 
 ## Build
 
-Requires JDK 17 and the Android SDK at `/opt/android-sdk` (wired via `local.properties`).
+Requires JDK 17 and the Android SDK (path via `local.properties`).
 
 ```bash
-# from project root:
-gradle :app:assembleDebug
-# APK at app/build/outputs/apk/debug/app-debug.apk
+gradle :app:testDebugUnitTest   # 15 unit tests (pure Kotlin, no device)
+gradle :app:assembleDebug       # APK at app/build/outputs/apk/debug/app-debug.apk
+gradle :app:bundleRelease       # AAB for Play Store (signed if keystore configured)
 ```
 
-## Install (one-time, PC needed)
+Release signing reads an optional `keystore.properties` from
+`~/.local/secrets/asus/deepcolor-upload-keystore.properties` — when absent,
+release builds are unsigned.
+
+## Install on a TV box (one-time, PC needed)
 
 ```bash
-bash scripts/install.sh
+bash scripts/install.sh            # adb over WiFi, default 192.168.1.137:5555
+BOX_IP=192.168.1.168:5555 bash scripts/install.sh   # override box address
 ```
 
-Installs the APK on the box at `192.168.1.137:5555` (adb over WiFi) and enables the accessibility service.
+Installs the APK and enables the accessibility service (appends to the existing
+service list — never overwrites other enabled services).
 
 ## Verify
 
@@ -41,8 +68,15 @@ Installs the APK on the box at `192.168.1.137:5555` (adb over WiFi) and enables 
 bash scripts/verify.sh
 ```
 
-Shows the current display mode (`mActiveModeId`) and the enabled accessibility services. After rebooting the box, `mActiveModeId` should show `65` (toggle fired) and colors should be correct.
+Shows the active display mode and enabled accessibility services. After a reboot,
+the box should negotiate the correct 4K mode and colors should be right.
+
+## Privacy
+
+No data is collected, stored remotely, or shared. The app has no Internet
+permission. It keeps two timestamps locally (last toggle run) to avoid re-toggling
+every screen-on. See [PRIVACY_POLICY.md](PRIVACY_POLICY.md).
 
 ## License
 
-Private project (2026). Source may be open-sourced later.
+MIT — see [LICENSE](LICENSE).
