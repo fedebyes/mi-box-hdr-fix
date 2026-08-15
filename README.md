@@ -5,6 +5,10 @@ Fix HDMI color-depth (deep color) handshake failures on Android TV boxes **autom
 [![Build & Test](https://github.com/fedebyes/mibox-deep-color-toggle/actions/workflows/build.yml/badge.svg)](https://github.com/fedebyes/mibox-deep-color-toggle/actions/workflows/build.yml)
 [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
 
+<p align="center">
+  <img src="play-assets/icon-512.png" alt="Deep Color Toggle icon" width="128">
+</p>
+
 ![App](play-assets/screenshot-app-main.png)
 
 ## The problem
