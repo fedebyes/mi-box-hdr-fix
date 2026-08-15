@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="app_name">Mi Box HDR Fix</string>
+    <string name="app_subtitle">Forces HDMI HDR re-negotiation at boot</string>
     <string name="accessibility_description">Mi Box HDR Fix forces an HDMI re-negotiation on your Mi Box S at boot and on wake, fixing HDR/color handshake failures caused by HDMI sync boxes, switches, and receivers. When enabled, the service briefly toggles the display color depth shortly after boot and when the screen state changes. Enable this service to keep the fix active automatically.</string>
     <string name="toggle_now">Fix now</string>
     <string name="status_accessibility_off">Accessibility service not enabled</string>

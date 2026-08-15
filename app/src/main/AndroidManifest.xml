@@ -9,7 +9,8 @@
         android:roundIcon="@mipmap/ic_launcher"
         android:allowBackup="true"
         android:supportsRtl="true"
-        android:theme="@android:style/Theme.Material.Light.NoActionBar">
+        android:theme="@android:style/Theme.Material.NoActionBar"
+        android:windowBackground="@drawable/bg_app">
 
         <activity
             android:name=".MainActivity"

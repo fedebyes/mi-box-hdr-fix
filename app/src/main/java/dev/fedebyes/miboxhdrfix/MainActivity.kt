@@ -1,6 +1,7 @@
 package dev.fedebyes.miboxhdrfix
 
 import android.app.Activity
+import android.graphics.Color
 import android.os.Bundle
 import android.widget.Button
 import android.widget.TextView
@@ -20,19 +21,23 @@ class MainActivity : Activity() {
             if (service != null) {
                 service.toggleNow()
             } else {
-                findViewById<TextView>(R.id.text_status).text =
-                    getString(R.string.status_accessibility_off)
+                setStatus(getString(R.string.status_accessibility_off), false)
             }
         }
     }
 
     override fun onResume() {
         super.onResume()
-        val statusText = findViewById<TextView>(R.id.text_status)
-        statusText.text = if (DeepColorAccessibilityService.instance != null) {
-            getString(R.string.status_ok)
+        if (DeepColorAccessibilityService.instance != null) {
+            setStatus(getString(R.string.status_ok), true)
         } else {
-            getString(R.string.status_accessibility_off)
+            setStatus(getString(R.string.status_accessibility_off), false)
         }
+    }
+
+    private fun setStatus(text: String, ok: Boolean) {
+        val statusText = findViewById<TextView>(R.id.text_status)
+        statusText.text = text
+        statusText.setTextColor(if (ok) Color.parseColor("#66BB6A") else Color.parseColor("#FFB74D"))
     }
 }
