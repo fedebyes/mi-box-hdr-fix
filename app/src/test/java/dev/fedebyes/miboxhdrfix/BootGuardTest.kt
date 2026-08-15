@@ -1,4 +1,4 @@
-package dev.fedebyes.deepcolortoggle
+package dev.fedebyes.miboxhdrfix
 
 import org.junit.Assert.assertFalse
 import org.junit.Assert.assertTrue

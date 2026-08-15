@@ -1,10 +1,10 @@
 # Privacy Policy
 
-**Deep Color Toggle** — last updated: 2026-08-15
+**Mi Box HDR Fix** — last updated: 2026-08-15
 
 ## Data collection
 
-Deep Color Toggle **does not collect, store, transmit, or share any personal data**.
+**Mi Box HDR Fix** **does not collect, store, transmit, or share any personal data**.
 
 - The app has **no Internet permission**. It cannot connect to any network.
 - The app does not use analytics, crash reporting, advertising, or tracking SDKs.
@@ -25,8 +25,8 @@ works after the user explicitly enables it in Android's Accessibility settings.
 
 When enabled, the service briefly opens the system display-settings screen and
 emits touch gestures to toggle the *Color Depth Settings* option. It does this
-automatically after device boot and when the screen turns on, to fix HDMI
-color-depth handshake issues on Android TV boxes. The service:
+automatically after device boot and when the screen turns on, to force an HDMI
+re-negotiation and fix HDR/color handshake failures on Android TV boxes. The service:
 
 - does **not** read screen content (window content retrieval is disabled);
 - does **not** intercept or log keystrokes;
@@ -35,4 +35,4 @@ color-depth handshake issues on Android TV boxes. The service:
 ## Contact
 
 For questions about this policy, open an issue in the GitHub repository:
-https://github.com/fedebyes/mibox-deep-color-toggle
+https://github.com/fedebyes/mi-box-hdr-fix

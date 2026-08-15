@@ -1,11 +1,11 @@
-package dev.fedebyes.deepcolortoggle
+package dev.fedebyes.miboxhdrfix
 
-import dev.fedebyes.deepcolortoggle.Config.COLOR_DEPTH_ROW
-import dev.fedebyes.deepcolortoggle.Config.DIALOG_OFF
-import dev.fedebyes.deepcolortoggle.Config.DIALOG_ON
-import dev.fedebyes.deepcolortoggle.Config.SCREEN_RESOLUTION_ROW
-import dev.fedebyes.deepcolortoggle.Direction
-import dev.fedebyes.deepcolortoggle.Step
+import dev.fedebyes.miboxhdrfix.Config.COLOR_DEPTH_ROW
+import dev.fedebyes.miboxhdrfix.Config.DIALOG_OFF
+import dev.fedebyes.miboxhdrfix.Config.DIALOG_ON
+import dev.fedebyes.miboxhdrfix.Config.SCREEN_RESOLUTION_ROW
+import dev.fedebyes.miboxhdrfix.Direction
+import dev.fedebyes.miboxhdrfix.Step
 import org.junit.Assert.assertEquals
 import org.junit.Assert.assertSame
 import org.junit.Assert.assertTrue

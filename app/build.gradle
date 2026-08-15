@@ -13,11 +13,11 @@ if (hasKeystore) {
 }
 
 android {
-    namespace 'dev.fedebyes.deepcolortoggle'
+    namespace 'dev.fedebyes.miboxhdrfix'
     compileSdk 36
 
     defaultConfig {
-        applicationId "dev.fedebyes.deepcolortoggle"
+        applicationId "dev.fedebyes.miboxhdrfix"
         minSdk 28
         targetSdk 36
         versionCode 1

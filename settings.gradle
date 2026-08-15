@@ -14,5 +14,5 @@ dependencyResolutionManagement {
     }
 }
 
-rootProject.name = "mibox-deep-color-toggle"
+rootProject.name = "mi-box-hdr-fix"
 include ':app'

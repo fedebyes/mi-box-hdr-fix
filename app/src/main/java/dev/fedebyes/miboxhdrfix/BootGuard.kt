@@ -1,4 +1,4 @@
-package dev.fedebyes.deepcolortoggle
+package dev.fedebyes.miboxhdrfix
 
 /**
  * Decides whether the deep-color toggle should run.

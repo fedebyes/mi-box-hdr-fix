@@ -1,9 +1,9 @@
-package dev.fedebyes.deepcolortoggle
+package dev.fedebyes.miboxhdrfix
 
-import dev.fedebyes.deepcolortoggle.Config.COLOR_DEPTH_ROW
-import dev.fedebyes.deepcolortoggle.Config.DIALOG_OFF
-import dev.fedebyes.deepcolortoggle.Config.DIALOG_ON
-import dev.fedebyes.deepcolortoggle.Config.SCREEN_RESOLUTION_ROW
+import dev.fedebyes.miboxhdrfix.Config.COLOR_DEPTH_ROW
+import dev.fedebyes.miboxhdrfix.Config.DIALOG_OFF
+import dev.fedebyes.miboxhdrfix.Config.DIALOG_ON
+import dev.fedebyes.miboxhdrfix.Config.SCREEN_RESOLUTION_ROW
 
 /**
  * Pure Kotlin definition of the UI automation steps. No Android imports —

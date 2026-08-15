@@ -1,30 +1,31 @@
 # Play Store Listing (copy-paste draft)
 
-App name: **Deep Color Toggle**
+App name: **Mi Box HDR Fix**
 
 ## Short description (80 chars max)
 
-Fix HDMI color-depth handshake issues on Android TV boxes automatically. No root.
+Fix HDR/color handshake failures on Mi Box S — automatic HDMI re-negotiation. No root.
 
 ## Full description (~1500 chars)
 
-**Fix your HDMI handshake automatically.**
+**Fix your HDMI HDR handshake automatically.**
 
-TV boxes connected through an HDMI switch, LED sync box, or receiver often fail
-the HDMI handshake at boot: the picture comes up with the wrong colors until you
-manually toggle *Color Depth Settings* off and on.
+If your Mi Box S is connected through an HDMI sync box, switch, or receiver, the
+HDMI handshake often fails at boot: HDR negotiation breaks and the picture comes
+up with the wrong colors until you manually toggle the color depth off and on.
 
-Deep Color Toggle automates that fix. After you enable it once, it:
+Mi Box HDR Fix automates that fix. After you enable it once, it:
 
-- runs the toggle automatically a few seconds after boot;
+- forces an HDMI re-negotiation a few seconds after boot;
 - re-runs it when the screen turns on (wake from standby);
 - never repeats within the same boot/wake window, so it stays out of your way.
 
 **How it works**
 
 The app opens the system display-settings screen and emits the exact taps needed
-to toggle Color Depth off → on (the verified Mi Box S sequence). It uses Android's
-Accessibility API — no root, no PC at boot, nothing to configure.
+to toggle Color Depth off → on (the verified Mi Box S sequence), forcing the TV
+to re-negotiate HDR. It uses Android's Accessibility API — no root, no PC at
+boot, nothing to configure.
 
 **Compatibility**
 
@@ -45,7 +46,7 @@ firmware. On other boxes the display-settings layout may differ.
 
 **Open source**
 
-MIT licensed on GitHub: github.com/fedebyes/mibox-deep-color-toggle
+MIT licensed on GitHub: github.com/fedebyes/mi-box-hdr-fix
 
 ## Data safety (Play Console answers)
 
@@ -60,8 +61,9 @@ No content categories apply → expected rating: **Everyone**.
 ## Accessibility declaration (Play Console)
 
 Declare `DeepColorAccessibilityService` with purpose:
-"Automates a display-settings toggle (Color Depth) on Android TV boxes to fix
-HDMI handshake/color issues. Does not read screen content or keystrokes."
+"Forces HDMI re-negotiation on Mi Box S by toggling the display Color Depth
+setting at boot/wake, fixing HDR handshake failures with sync boxes. Does not
+read screen content or keystrokes."
 
 ## Assets
 
@@ -69,4 +71,4 @@ HDMI handshake/color issues. Does not read screen content or keystrokes."
 - Feature graphic: `play-assets/feature-graphic-1024x500.png` (1024×500)
 - Phone screenshot: `play-assets/screenshot-app-main.png`
 - TV screenshot: `play-assets/screenshot-settings.png`
-- Privacy policy URL: `https://fedebyes.github.io/mibox-deep-color-toggle/PRIVACY_POLICY.md`
+- Privacy policy URL: `https://fedebyes.github.io/mi-box-hdr-fix/PRIVACY_POLICY.md`

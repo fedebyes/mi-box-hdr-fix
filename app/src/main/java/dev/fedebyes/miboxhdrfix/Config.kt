@@ -1,4 +1,4 @@
-package dev.fedebyes.deepcolortoggle
+package dev.fedebyes.miboxhdrfix
 
 /**
  * Central configuration for the deep-color toggle automation.

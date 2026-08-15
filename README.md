@@ -1,32 +1,27 @@
-# Deep Color Toggle
+# Mi Box HDR Fix
 
-Fix HDMI color-depth (deep color) handshake failures on Android TV boxes **automatically**, no root required.
+Forces HDMI re-negotiation on your **Mi Box S** at boot and on wake — fixing HDR/color handshake failures caused by HDMI sync boxes, switches, and receivers. No root, no PC at boot.
 
-[![Build & Test](https://github.com/fedebyes/mibox-deep-color-toggle/actions/workflows/build.yml/badge.svg)](https://github.com/fedebyes/mibox-deep-color-toggle/actions/workflows/build.yml)
+[![Build & Test](https://github.com/fedebyes/mi-box-hdr-fix/actions/workflows/build.yml/badge.svg)](https://github.com/fedebyes/mi-box-hdr-fix/actions/workflows/build.yml)
 [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
 
 <p align="center">
-  <img src="play-assets/icon-512.png" alt="Deep Color Toggle icon" width="128">
+  <img src="play-assets/icon-512.png" alt="Mi Box HDR Fix icon" width="128">
 </p>
 
 ![App](play-assets/screenshot-app-main.png)
 
 ## The problem
 
-TV → LED sync box → TV chain (e.g. Mi Box S → HDMI LED sync box → LG TV) all power
-on together. The HDMI handshake fails, the color matrix comes up wrong, and the only
-manual fix is toggling **Color Depth Settings** off → on once. Doing that on every
-boot/wake gets old fast.
+TV box → HDMI sync box / switch / receiver → TV chains often **fail the HDMI handshake at boot**: HDR negotiation breaks, the color matrix comes out wrong, and the only fix is toggling the display color depth once to force re-negotiation. Doing that manually on every boot/wake gets old fast.
 
 ## What it does
 
 A tiny framework-only Android app (no AndroidX, no Internet permission) that:
 
 - listens for **boot** and **screen-on** events;
-- opens the system display-settings screen and emits the verified tap sequence that
-  toggles Color Depth off → on;
-- **guards** itself: the toggle runs at most once per boot/wake window (dual
-  elapsed + wall-clock guard), and the sequence aborts if any step is rejected.
+- opens the system display-settings screen and emits the verified tap sequence that toggles Color Depth, forcing the TV to **re-negotiate HDR**;
+- **guards** itself: the sequence runs at most once per boot/wake window (dual elapsed + wall-clock guard), and aborts if any step is rejected.
 
 Requires **no root** and **no PC at boot**. The only permission is the
 accessibility service, which you enable once after install.
@@ -81,12 +76,12 @@ bash scripts/verify.sh
 ```
 
 Shows the active display mode and enabled accessibility services. After a reboot,
-the box should negotiate the correct 4K mode and colors should be right.
+the box should negotiate the correct 4K HDR mode and colors should be right.
 
 ## Privacy
 
 No data is collected, stored remotely, or shared. The app has no Internet
-permission. It keeps two timestamps locally (last toggle run) to avoid re-toggling
+permission. It keeps two timestamps locally (last fix run) to avoid re-toggling
 every screen-on. See [PRIVACY_POLICY.md](PRIVACY_POLICY.md).
 
 ## License

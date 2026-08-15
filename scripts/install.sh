@@ -1,11 +1,11 @@
 #!/usr/bin/env bash
 set -euo pipefail
 
-# Install the deep color toggle APK on the Mi Box S and enable the
-# accessibility service that fires the toggle at boot/wake.
+# Install the Mi Box HDR Fix APK on the Mi Box S and enable the
+# accessibility service that forces the HDMI re-negotiation at boot/wake.
 # Override the box address with: BOX_IP=192.168.1.137:5555 ./scripts/install.sh
 BOX_IP="${BOX_IP:-192.168.1.137:5555}"
-SERVICE="dev.fedebyes.deepcolortoggle/.DeepColorAccessibilityService"
+SERVICE="dev.fedebyes.miboxhdrfix/.DeepColorAccessibilityService"
 
 SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 ROOT="$(dirname "$SCRIPT_DIR")"

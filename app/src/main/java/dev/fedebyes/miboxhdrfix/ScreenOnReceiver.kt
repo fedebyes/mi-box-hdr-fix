@@ -1,4 +1,4 @@
-package dev.fedebyes.deepcolortoggle
+package dev.fedebyes.miboxhdrfix
 
 import android.content.BroadcastReceiver
 import android.content.Context
