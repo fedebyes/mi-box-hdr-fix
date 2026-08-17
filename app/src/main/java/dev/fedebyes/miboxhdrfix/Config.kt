@@ -32,13 +32,17 @@ object Config {
     val DIALOG_ON = 1350 to 220
 
     /** Extra delay before the FIRST step, letting the settings activity render. */
-    const val FIRST_STEP_DELAY_MS = 4000L
+    const val FIRST_STEP_DELAY_MS = 2500L
 
     /** Pause between consecutive taps/keys, in milliseconds. */
     const val STEP_DELAY_MS = 1800L
 
-    /** Delay after boot before the toggle sequence starts, in milliseconds. */
-    const val BOOT_DELAY_MS = 20000L
+    /**
+     * Delay after boot before the toggle sequence starts, in milliseconds.
+     * Kept short (~9s) so the fix applies as early as possible after boot;
+     * the HDMI/LED chain gets enough settle time before the first tap.
+     */
+    const val BOOT_DELAY_MS = 9000L
 
     /**
      * Wall-clock gap above which the guard treats the trigger as a new boot
