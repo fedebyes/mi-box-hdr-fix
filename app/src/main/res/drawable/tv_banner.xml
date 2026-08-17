@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Android TV launcher banner (320x180). Same visual identity as the
+     adaptive launcher icon: navy gradient background + blue color-depth
+     ring with white center dot. Without a banner, the TV launcher shows
+     the app tile with no branding and it can be missed in the Home rows. -->
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="320dp"
+    android:height="180dp"
+    android:viewportWidth="320"
+    android:viewportHeight="180">
+
+    <!-- Navy vertical gradient background -->
+    <path
+        android:pathData="M0,0h320v180h-320z">
+        <aapt:attr xmlns:aapt="http://schemas.android.com/aapt"
+            name="android:fillColor">
+            <gradient
+                android:startColor="#16213E"
+                android:endColor="#1B2A4A"
+                android:startX="0"
+                android:startY="0"
+                android:endX="0"
+                android:endY="180"
+                android:type="linear" />
+        </aapt:attr>
+    </path>
+
+    <!-- Blue color-depth ring (centered ~40% from the left) -->
+    <path
+        android:fillColor="#3D9BE9"
+        android:pathData="M90,90m-40,0a40,40 0,1 1,80 0a40,40 0,1 1,-80 0" />
+
+    <!-- White center dot -->
+    <path
+        android:fillColor="#FFFFFF"
+        android:pathData="M90,90m-15,0a15,15 0,1 1,30 0a15,15 0,1 1,-30 0" />
+
+    <!-- Secondary accent ring (subtle, right side) -->
+    <path
+        android:fillColor="#223A66"
+        android:pathData="M230,90m-34,0a34,34 0,1 1,68 0a34,34 0,1 1,-68 0" />
+
+</vector>
