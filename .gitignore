@@ -16,3 +16,9 @@ captures/
 
 # OS
 .DS_Store
+
+# Local backups & signing (not for GitHub)
+backups/
+*.jks
+*.keystore
+*keystore*.properties
